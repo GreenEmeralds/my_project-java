@@ -1,0 +1,89 @@
+package panels;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+import main.Constants;
+import main.ScreenController;
+import managers.IGameManager;
+
+public class GameOverPanel extends JPanel{
+	
+	private static final long serialVersionUID = 1L;
+	
+	public static JButton backBtn = new JButton("< BACK >");
+
+	public void initialize(JPanel game, IGameManager gameManager)
+	{
+		// BACKGROUND 
+        // Create the inner border line effect
+        EmptyBorder paddingBorder = new EmptyBorder(Constants.margin, Constants.margin, Constants.margin, Constants.margin);
+        LineBorder lineBorder = new LineBorder(Constants.acColor, 3); // 2-pixel blue line
+        CompoundBorder innerLineBorder = new CompoundBorder(paddingBorder, lineBorder);
+        
+        setLayout(null);
+        setBackground(Constants.bgColor);
+        setBorder(innerLineBorder);
+        
+        // BACK BUTTON 
+		backBtn.setBorder(null);
+		backBtn.setFont(Constants.printFont);
+		backBtn.setBounds(0, Constants.SCREEN_SIZE[1] - 50 - Constants.margin - 25, 200, 50);
+        
+		//TEXT
+		JLabel GameOver_LBL = new JLabel();
+		
+		int text_W = 300;
+		int text_H = 100;
+
+		GameOver_LBL.setBounds((int)Constants.getCenterPosX(text_W), (int)Constants.getCenterPosY(text_H)- 40, text_W , text_H); // x y, w h 
+		GameOver_LBL.setText("GAME OVER");
+		GameOver_LBL.setFont(Constants.titleFont);
+		GameOver_LBL.setBackground(Constants.bgColor);
+
+		//RESTART BUTTON
+		int btn_W = 200;
+		int btn_H = 50;
+		
+		JButton Restart_BTN  = new JButton("RESTART");
+		
+		Restart_BTN.setBounds((int)Constants.getCenterPosX(btn_W), (int)Constants.getCenterPosY(btn_H)+Constants.margin, btn_W , btn_H); // x y, w h 
+		Restart_BTN.setBorder(BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth));
+		Restart_BTN.setBackground(Constants.bgColor);
+
+		Restart_BTN.setFont(Constants.headerFont);
+
+		Restart_BTN.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ScreenController.switchScene(game);
+				gameManager.setRestart();
+			}	
+		});
+		
+		//ADD TO PANEL
+		add(backBtn);
+		add(GameOver_LBL);
+		add(Restart_BTN);
+		
+	}
+	
+	public static void setBackButton(JPanel mainMenu)
+	{
+        backBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("back");
+				ScreenController.switchScene(mainMenu);
+			}	
+		});
+	}
+}
