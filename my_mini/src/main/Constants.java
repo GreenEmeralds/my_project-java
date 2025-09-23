@@ -7,7 +7,7 @@ import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Constants {
+public class Constants { 
 	
 	public static int[] SCREEN_SIZE = {1000,600};
 	
