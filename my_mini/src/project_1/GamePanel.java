@@ -17,7 +17,7 @@ import java.awt.event.*;
 public class GamePanel extends JPanel implements ActionListener,KeyListener,IGameManager{
 	private static final long serialVersionUID = 1L; //?
 
-	Timer timer = new Timer(5,this);
+	Timer timer = new Timer(20,this);
 
 	float BOUNDS_LINE_X;
 	float BOUNDS_X;
@@ -96,16 +96,28 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 
 		//RESUME BUTTON
 		add(UiManager.resume_BTN(this,this));
+		//BACK BUTTON
+		add(UiManager.back_BTN(this,this));
+		
+		
 
 	}
 	
 ////UPDATE VOID ////
 	public void checkCollision()
 	{
-		if(ball.getBounds().intersects(player.getBounds())|| ball.getBounds().intersects(enemyBlock.getBounds()) )
+		if(ball.getBounds().intersects(player.getBounds()))
 		{
-			//System.out.println("collision");
-			ball.collided();
+			//System.out.println(ball.getBounds());
+			ball.collided(player.getPositionY()- (player.REC_HEIGHT));
+			enemyBlock.move = 1;
+		}
+		
+		if(ball.getBounds().intersects(enemyBlock.getBounds()) )
+		{
+			//System.out.println(ball.getBounds());
+			ball.collided(enemyBlock.getPositionY() + (enemyBlock.REC_HEIGHT));
+			enemyBlock.move = 0;
 		}
 	}
 	
@@ -114,7 +126,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	{
 		player.move();
 		ball.move();
-		enemyBlock.move(ball.getPosition()[0]);
+		enemyBlock.move(ball.getPosition()[0], ball.getVEL()[1]);
 		
 		checkCollision();
 		repaint();

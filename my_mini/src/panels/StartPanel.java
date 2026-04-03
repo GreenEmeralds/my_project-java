@@ -19,8 +19,10 @@ public class StartPanel extends JPanel{
 	
 	
 	public static JButton backBtn = new JButton("< BACK >");
-
-	public void initialize(JPanel game, IGameManager gameManager)
+	public static JButton[] Start_BTNs = new JButton[3];
+	int num=0;
+	
+	public StartPanel(JPanel[] game, IGameManager[] gameManager)
 	{
 		// BACKGROUND 
         // Create the inner border line effect
@@ -40,26 +42,65 @@ public class StartPanel extends JPanel{
         // START BUTTON 
 		int W = 300;
 		int H = 100;
+		// NOTE: you can't change the already  start btn after it had been initialed // maybe JButton and Button class work differently
 		
-		JButton Start_BTN  = new JButton("START");
-		Start_BTN.setBounds(Constants.SCREEN_SIZE[0]/2 - W/2, Constants.SCREEN_SIZE[1]/2 -H/2 -25, W, H); // x y, w h 
 		
-		Start_BTN.setBorder(BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth));
-		Start_BTN.setBackground(Constants.bgColor);
+		while(num<3)
+		{
+			Start_BTNs[num] = new JButton("START");
+			Start_BTNs[num].setBounds(Constants.SCREEN_SIZE[0]/2 - W/2, Constants.SCREEN_SIZE[1]/2 -H/2 -25, W, H); // x y, w h 
+			
+			Start_BTNs[num].setBorder(BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth));
+			Start_BTNs[num].setBackground(Constants.bgColor);
 
-		Start_BTN.setFont(Constants.titleFont);
-
-		Start_BTN.addActionListener(new ActionListener() {
+			Start_BTNs[num].setFont(Constants.titleFont);
+			
+			num++;
+		}
+		// this might justr have to be indivituall because of action listner ... 
+		Start_BTNs[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ScreenController.switchScene(game);
+				ScreenController.switchScene(game[0]);
                 // set start function from game panel
-				gameManager.setStart();
+				gameManager[0].setStart();
+			}	
+		});
+		Start_BTNs[1].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ScreenController.switchScene(game[1]);
+                // set start function from game panel
+				gameManager[1].setStart();
+			}	
+		});
+		Start_BTNs[2].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ScreenController.switchScene(game[2]);
+                // set start function from game panel
+				gameManager[2].setStart();
 			}	
 		});
 		
-        // ADD COMPONEMTS
-		add(Start_BTN);
+	}
+	
+
+	public void initialize(int gameNumber)
+	{
+		// ADD COMPONEMTS
+		for(int i =0; i<3; i++)
+		{
+			if(gameNumber == i)
+			{
+				add(Start_BTNs[i]);
+			}
+			else
+			{
+				remove(Start_BTNs[i]);
+			}
+		}
+        
         add(backBtn);		
 	}
 	

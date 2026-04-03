@@ -9,7 +9,7 @@ import main.Constants;
 public class Player {// extends GameObject {
 
 
-    float VEL_X = 2f;
+    float VEL_X = 10f;
     int DIRECTION;
     float REC_WIDTH,REC_HEIGHT,POS_X,POS_Y;
 
@@ -80,6 +80,12 @@ public class Player {// extends GameObject {
     {
         return POS_X;
     }
+    
+    public float getPositionY()
+    {
+        return POS_Y;
+    }
+    
 
     public void setPosition(float newPOS_X) {
         this.POS_X = newPOS_X;

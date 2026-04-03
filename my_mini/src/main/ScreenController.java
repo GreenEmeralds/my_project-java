@@ -14,6 +14,7 @@ public class ScreenController {
 	
 	public static void switchScene(JPanel scene)
 	{
+		//System.out.println("change to " + scene);
         //Remove all components from the content pane of the JFrame
         f.getContentPane().removeAll();
         // Add new components
@@ -21,7 +22,6 @@ public class ScreenController {
         // Revalidated and repaint to update the UI
         f.getContentPane().revalidate();
         f.getContentPane().repaint();
-
 
 	}
 }

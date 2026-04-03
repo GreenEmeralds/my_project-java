@@ -6,10 +6,12 @@ import java.awt.geom.Rectangle2D;
 import main.Constants;
 
 public class EnemyBlock {
-	int VEL_X = 1;
+	int SPEED_X = 10;
     int DIRECTION;
     float REC_WIDTH,REC_HEIGHT,POS_X,POS_Y;
     float[] BOUNDS_X = {0,0};
+    
+    public int move = 1; // 0 = stop, 1 = move
 
     public EnemyBlock(float REC_WIDTH, float REC_HEIGHT, float POS_X, float POS_Y, float SCREEN_X, float SCREEN_Y)
     {
@@ -39,27 +41,36 @@ public class EnemyBlock {
         return new Rectangle2D.Float(POS_X, POS_Y, REC_WIDTH, REC_HEIGHT);
     }
     
-    public void move(float BALL_POS_X)
-    {
-        if(POS_X <= BOUNDS_X[0]) // X left 
-        {
-        	DIRECTION = 1;
-        }
-        else if(POS_X >= BOUNDS_X[1]) // X right 
-        {
-        	DIRECTION = -1;
-        }
+    public void move(float BALL_POS_X, float BALL_VEL_X)
+    {	
+    	/*if (move == 0 && BALL_VEL_X < 0)
+    		setPositionX(getPositionX() + ( BOUNDS_X[1] - getPositionX())*.1f);
     	
-    	setPosition(POS_X + VEL_X * DIRECTION);
-        
+    	else if (move == 0 && BALL_VEL_X > 0)
+    		setPositionX(getPositionX() + ( BOUNDS_X[1] - getPositionX())*.1f);
+    	
+    	else if (move == 1 && BALL_POS_X < BOUNDS_X[1]+10)
+    		setPositionX(getPositionX() + ((BALL_POS_X) - getPositionX())*.1f);     
+    	*/
+    	
+    	if (move == 0 && BALL_VEL_X > 0)
+    		setPositionX(getPositionX() + ((BALL_POS_X-10) - getPositionX())*.05f);
+    	else if (move == 1 && BALL_POS_X-30 < BOUNDS_X[1])
+    		setPositionX(getPositionX() + ((BALL_POS_X-30) - getPositionX())*.1f);
+    
     }
-
-    public float getPosition()
+    
+    public float getPositionX()
     {
         return POS_X;
     }
+    
+    public float getPositionY()
+    {
+        return POS_Y;
+    }
 
-    public void setPosition(float newPOS_X) {
+    public void setPositionX(float newPOS_X) {
 
     	this.POS_X = newPOS_X;
         

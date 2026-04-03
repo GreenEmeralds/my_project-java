@@ -99,6 +99,9 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 
 		//RESUME BUTTON
 		add(UiManager.resume_BTN(this,this));
+		
+		//BACK BUTTON
+		add(UiManager.back_BTN(this,this));
 
 	}
 	
