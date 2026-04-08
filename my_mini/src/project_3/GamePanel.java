@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		addKeyListener(this);
 		setFocusable(true);
 
-		gameOverPanel.initialize(this,this);
+		//gameOverPanel.initialize(this,this);
 		
 		timer.stop();
 		

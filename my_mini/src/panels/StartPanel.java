@@ -61,6 +61,7 @@ public class StartPanel extends JPanel{
 		Start_BTNs[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				ScreenController.switchScene(game[0]);
                 // set start function from game panel
 				gameManager[0].setStart();

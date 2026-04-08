@@ -51,6 +51,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		//setVisible(true);
 
 		timer.stop();
+		gameOverPanel.initialize();
 	}
 	
 //// BUTTON FUNCTIONS ///
@@ -58,13 +59,13 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	public void setStart()
 	{
 		timer.start();
-		gameOverPanel.initialize(this,this);
+		//gameOverPanel.initialize(this,this);
 		addUI();
 		// in order for KeyListener to work properly 
 		requestFocusInWindow(); // Request focus for the panel
 		spawner.addSpawnTimer(); // start timer after start is pressed
 	}
-	
+	 
 	public void setPause()
 	{		
 		// add spawn timer stop as well

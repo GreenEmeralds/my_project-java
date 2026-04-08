@@ -19,6 +19,7 @@ public class ScreenController {
         f.getContentPane().removeAll();
         // Add new components
         f.add(scene); 
+        
         // Revalidated and repaint to update the UI
         f.getContentPane().revalidate();
         f.getContentPane().repaint();

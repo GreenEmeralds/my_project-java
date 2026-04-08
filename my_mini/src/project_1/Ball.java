@@ -36,6 +36,7 @@ public class Ball {//extends GameObject{
 	int randomNumber;
 	
 	public int addScore = 0; // 0 = add, 1 = added, 2 = stop
+	public int removeHeart = 0; // ... 0 = add, 1 = added, 2 = stop
 	
 	public float[] setVEL(float T)//float[] colliderN)
 	{
@@ -84,6 +85,11 @@ public class Ball {//extends GameObject{
 	public void addScore()
 	{
 		addScore = 1;
+	}
+	
+	public void removeHeart()
+	{
+		removeHeart = 1;
 	}
 	
     public void draw(Graphics g)
@@ -139,6 +145,7 @@ public class Ball {//extends GameObject{
     		
     		float[] newpos = {Constants.getCenterPosX(REC_WIDTH),Constants.getCenterPosY(REC_WIDTH)};
     		setPosition(newpos);
+    		removeHeart();
     	}
     	//SPEED[1]= ((int) (Math.random() * (max - min + 1)) + min)*.5f;
     	//float[] newpos = {Constants.getCenterPosX(REC_WIDTH),Constants.getCenterPosY(REC_WIDTH)};

@@ -7,6 +7,7 @@ public interface IGameManager {
     void setResume(); 
     void setRestart(); 
     
+    
     //boolean addScore();
     
     //...

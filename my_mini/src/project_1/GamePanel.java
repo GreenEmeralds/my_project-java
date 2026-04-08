@@ -1,11 +1,15 @@
 package project_1;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.CompoundBorder;
 
 import main.Constants;
+import main.ScreenController;
 import managers.IGameManager;
 import managers.UiManager;
 import panels.GameOverPanel;
@@ -32,13 +36,21 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	private EnemyBlock enemyBlock;
 	
 	GameOverPanel gameOverPanel = new GameOverPanel();
+	public static JLabel[] Hearts_LBL  = new JLabel[3];
 	
 	int score = 0;
+	int hearts = 3;
 	
-	public GamePanel(float SCREEN_X, float SCREEN_Y)
+	private ImageIcon heart_IMG;
+	
+	
+	public GamePanel(float SCREEN_X, float SCREEN_Y,JFrame f)
 	{
 		setLayout(null);
 		setBackground(Constants.bgColor);
+		
+		heart_IMG = new ImageIcon(getClass().getResource("/coin.gif"));
+		
 		
 		player = new Player(BLOCK_WIDTH,BLOCK_HEIGHT,(SCREEN_X/2- BLOCK_WIDTH/2),(SCREEN_Y-SCREEN_GAP-BLOCK_HEIGHT*2));
 		ball = new Ball(BALL_SCALE,BALL_SCALE,(SCREEN_X/2-BALL_SCALE),(SCREEN_Y/2-BALL_SCALE));
@@ -46,10 +58,19 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		
 		addKeyListener(this);
 		setFocusable(true);
-
-		gameOverPanel.initialize(this,this);
 		
 		timer.stop();
+		
+		for(int i=0; i<3; i++)
+		{
+			Hearts_LBL[i] = new JLabel(heart_IMG);
+			Hearts_LBL[i].setBounds(Constants.margin + i*30, Constants.SCREEN_SIZE[1] - 50 - Constants.margin - 25, 50, 50);
+			Hearts_LBL[i].setFont(Constants.printFont);
+
+		}
+		 
+		gameOverPanel.initialize();
+		
 		
 	}
 ////BUTTON FUNCTIONS ///
@@ -74,7 +95,9 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	
 	public void setRestart()
 	{
-		timer.start();
+		timer.restart();
+		
+		
 	}
 
 	public void addUI()
@@ -99,8 +122,11 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		//BACK BUTTON
 		add(UiManager.back_BTN(this,this));
 		
-		
 
+		for(int i=0; i<3; i++)
+		{
+			add(Hearts_LBL[i]);
+		}
 	}
 	
 ////UPDATE VOID ////
@@ -127,15 +153,30 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		player.move();
 		ball.move();
 		enemyBlock.move(ball.getPosition()[0], ball.getVEL()[1]);
-		
 		checkCollision();
 		repaint();
+		
 		
 		if(ball.addScore == 1)
 		{	
 			ball.addScore = 2;
 			score++;
 			add(UiManager.score_LBL(score));	
+		}
+		
+		if(ball.removeHeart == 1 && hearts >= 1)
+		{
+			ball.removeHeart = 2;
+			hearts -=1;
+			Hearts_LBL[hearts].setVisible(false);
+		}
+		
+		//GAME OVER no more hearts 
+		if(hearts == 0)
+		{
+			timer.stop();
+			
+			ScreenController.switchScene(gameOverPanel);
 		}
 	}
 

@@ -26,18 +26,19 @@ public class MainMenu extends JPanel{
     JButton[] btns = new JButton[3];
     StartPanel startPanel;
     
-    public MainMenu(JFrame f, project_1.GamePanel game_1, project_2.GamePanel game_2, project_3.GamePanel game_3)
+    public MainMenu(JFrame f)
     {
     	setLayout(null);
     	setBackground(Constants.bgColor);
     	CreateTitle(0,Constants.margin,TITLE_SIZE[0],TITLE_SIZE[1]);
-    	AddButtons((int)Constants.getCenterPosX(PNL_SIZE[0]),TITLE_SIZE[1]+HEADER_SIZE[1]+Constants.margin*2,PNL_SIZE[0],PNL_SIZE[1],f,game_1,game_2, game_3);
+    	AddButtons((int)Constants.getCenterPosX(PNL_SIZE[0]),TITLE_SIZE[1]+HEADER_SIZE[1]+Constants.margin*2,PNL_SIZE[0],PNL_SIZE[1],f);
     	//
     	AddExit(0, Constants.SCREEN_SIZE[1]- 50 - Constants.margin - 25,200,50);
     	
     	StartPanel.setBackButton(this);
     	GameOverPanel.setBackButton(this);
     	UiManager.setBackButton(this);
+    	GameOverPanel.setRestartButton(this);
     }
 
 
@@ -65,13 +66,27 @@ public class MainMenu extends JPanel{
         add(titleLabel);
         add(headerLabel);
     }
-
-    void AddButtons(int x, int y, int w, int h, JFrame f, JPanel game_1, JPanel game_2, JPanel game_3)
+    
+    public void initalizeNew(JFrame f)
     {
     	// Initialize start button game system ...
-    	JPanel[] games = {game_1,game_2,game_3};
+    	// new games
+    	project_1.GamePanel game_1 = new project_1.GamePanel(Constants.SCREEN_SIZE[0],Constants.SCREEN_SIZE[1],f);
+        project_2.GamePanel game_2 = new project_2.GamePanel(Constants.SCREEN_SIZE[0],Constants.SCREEN_SIZE[1]);
+        project_3.GamePanel game_3 = new project_3.GamePanel(Constants.SCREEN_SIZE[0],Constants.SCREEN_SIZE[1]);
+        
+        // pass keyboard inputs to the Panel
+        f.addKeyListener(game_1);
+        f.addKeyListener(game_2);
+        f.addKeyListener(game_3);
+        
+        JPanel[] games = {game_1,game_2,game_3};
     	IGameManager[] gameManagers = {(IGameManager)game_1,(IGameManager)game_2,(IGameManager)game_3};
     	startPanel = new StartPanel(games,gameManagers);
+    }
+
+    void AddButtons(int x, int y, int w, int h, JFrame f)
+    {
     	
     	// Create Buttons
         JPanel panel = new JPanel();
@@ -103,27 +118,30 @@ public class MainMenu extends JPanel{
     		
             public void actionPerformed(ActionEvent e)
             {
+            	initalizeNew(f);
             	startPanel.initialize(0);
             	ScreenController.switchScene(startPanel);    
-            	System.out.println("game1");
+            	//System.out.println("game1");
             }
         });
     	
     	btns[1].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
+            	initalizeNew(f);
             	startPanel.initialize(1);
             	ScreenController.switchScene(startPanel); 
-            	System.out.println("game2");
+            	//System.out.println("game2");
             }
         });
     	
     	btns[2].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
+            	initalizeNew(f);
             	startPanel.initialize(2);
             	ScreenController.switchScene(startPanel);
-            	System.out.println("game3");
+            	//System.out.println("game3");
             }
         });
     	

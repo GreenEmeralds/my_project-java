@@ -13,15 +13,16 @@ import javax.swing.border.LineBorder;
 
 import main.Constants;
 import main.ScreenController;
-import managers.IGameManager;
 
 public class GameOverPanel extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	
 	public static JButton backBtn = new JButton("< BACK >");
-
-	public void initialize(JPanel game, IGameManager gameManager)
+	public static JButton Restart_BTN  = new JButton("RESTART");
+	//fix restart...
+	
+	public void initialize()
 	{
 		// BACKGROUND 
         // Create the inner border line effect
@@ -53,22 +54,13 @@ public class GameOverPanel extends JPanel{
 		int btn_W = 200;
 		int btn_H = 50;
 		
-		JButton Restart_BTN  = new JButton("RESTART");
-		
+
 		Restart_BTN.setBounds((int)Constants.getCenterPosX(btn_W), (int)Constants.getCenterPosY(btn_H)+Constants.margin, btn_W , btn_H); // x y, w h 
 		Restart_BTN.setBorder(BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth));
 		Restart_BTN.setBackground(Constants.bgColor);
 
 		Restart_BTN.setFont(Constants.headerFont);
 
-		Restart_BTN.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ScreenController.switchScene(game);
-				gameManager.setRestart();
-			}	
-		});
-		
 		//ADD TO PANEL
 		add(backBtn);
 		add(GameOver_LBL);
@@ -76,12 +68,25 @@ public class GameOverPanel extends JPanel{
 		
 	}
 	
+	public static void setRestartButton(JPanel mainMenu)
+	{
+		Restart_BTN.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+					ScreenController.switchScene(mainMenu);  
+				
+			}	
+		});
+	}
+	
+	
 	public static void setBackButton(JPanel mainMenu)
 	{
         backBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("back");
+				//System.out.println("back");
 				ScreenController.switchScene(mainMenu);
 			}	
 		});
