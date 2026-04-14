@@ -52,7 +52,7 @@ public class Obstacle {
 		if(getPosition()[0] <= p.getPosition()[0] && addScore == 0)
 		{
 			addScore = 1;
-			//System.out.println("true");
+			System.out.println("true");
 		}
 	}
 	
