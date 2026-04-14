@@ -10,7 +10,8 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import main.Constants;
+import main.GameConstants;
+import main.GameController;
 import main.ScreenController;
 import managers.IGameManager;
 
@@ -26,26 +27,32 @@ public class StartPanel extends JPanel{
 	{
 		// BACKGROUND 
         // Create the inner border line effect
-        EmptyBorder paddingBorder = new EmptyBorder(Constants.margin, Constants.margin, Constants.margin, Constants.margin);
-        LineBorder lineBorder = new LineBorder(Constants.acColor, 3); // 2-pixel blue line
+        EmptyBorder paddingBorder = new EmptyBorder(GameConstants.margin, GameConstants.margin, GameConstants.margin, GameConstants.margin);
+        LineBorder lineBorder = new LineBorder(GameConstants.acColor, 3); // 2-pixel blue line
         CompoundBorder innerLineBorder = new CompoundBorder(paddingBorder, lineBorder);
         
         setLayout(null);
-        setBackground(Constants.bgColor);
+        setBackground(GameConstants.bgColor);
         setBorder(innerLineBorder);
         
         // BACK BUTTON 
         backBtn.setBorder(null);
-		backBtn.setFont(Constants.printFont);
-		backBtn.setBounds(0, Constants.SCREEN_SIZE[1] - 50 - Constants.margin - 25, 200, 50);
+		backBtn.setFont(GameConstants.printFont);
+		backBtn.setBounds(0, GameConstants.SCREEN_SIZE[1] - 50 - GameConstants.margin - 25, 200, 50);
         
         // START BUTTON 
 		int W = 300;
 		int H = 100;
 		// NOTE: you can't change the already  start btn after it had been initialed // maybe JButton and Button class work differently
 		
+		Start_BTN.setBounds(GameConstants.SCREEN_SIZE[0]/2 - W/2, GameConstants.SCREEN_SIZE[1]/2 -H/2 -25, W, H); // x y, w h 
 		
-		while(num<3)
+		Start_BTN.setBorder(BorderFactory.createLineBorder(GameConstants.acColor, GameConstants.lineWidth));
+		Start_BTN.setBackground(GameConstants.bgColor);
+
+		Start_BTN.setFont(GameConstants.titleFont);
+		
+		if(Start_BTN.getActionListeners().length > 0)
 		{
 			Start_BTNs[num] = new JButton("START");
 			Start_BTNs[num].setBounds(Constants.SCREEN_SIZE[0]/2 - W/2, Constants.SCREEN_SIZE[1]/2 -H/2 -25, W, H); // x y, w h 

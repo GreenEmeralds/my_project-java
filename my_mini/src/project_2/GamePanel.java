@@ -5,8 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.CompoundBorder;
 
-import main.Constants;
-import main.ScreenController;
+import main.GameConstants;
 import managers.IGameManager;
 import managers.UiManager;
 import panels.GameOverPanel;
@@ -39,7 +38,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	public GamePanel(float SCREEN_X, float SCREEN_Y)
 	{
 		setLayout(null);
-		setBackground(Constants.bgColor);
+		setBackground(GameConstants.bgColor);
 
 		player = new Player(PLAYER_WIDTH,PLAYER_HEIGHT,(30),(SCREEN_Y - GROUND_GAP - PLAYER_HEIGHT),SCREEN_Y-GROUND_GAP - PLAYER_HEIGHT);
 		spawner = new Spawner(SCREEN_X,SCREEN_Y,GROUND_GAP);
@@ -88,8 +87,8 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		
 		//ADD BORDER
         setBorder(new CompoundBorder(
-        		BorderFactory.createLineBorder(Constants.bgColor, Constants.margin), 
-        		BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth)));
+        		BorderFactory.createLineBorder(GameConstants.bgColor, GameConstants.margin), 
+        		BorderFactory.createLineBorder(GameConstants.acColor, GameConstants.lineWidth)));
 		
 		//SCORE LABEL
 		add(UiManager.score_LBL(0));

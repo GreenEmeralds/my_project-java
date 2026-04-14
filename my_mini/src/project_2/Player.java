@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 
-import main.Constants;
+import main.GameConstants;
 
 public class Player {
 	float VEL_X = 1.5f;
@@ -34,7 +34,7 @@ public class Player {
 	{
 		Graphics2D g2d = (Graphics2D) g;
 
-		g2d.setColor(Constants.acColor);
+		g2d.setColor(GameConstants.acColor);
 		Rectangle2D.Float r2 = new Rectangle2D.Float(POS_X,POS_Y,REC_WIDTH,REC_HEIGHT);
 		g2d.fill(r2);
 	} 

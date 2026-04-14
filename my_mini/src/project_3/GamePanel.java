@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.CompoundBorder;
 
-import main.Constants;
+import main.GameConstants;
 import managers.IGameManager;
 import managers.UiManager;
 import panels.GameOverPanel;
@@ -23,7 +23,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	public GamePanel(float SCREEN_X, float SCREEN_Y)
 	{
 		setLayout(null);
-		setBackground(Constants.bgColor);
+		setBackground(GameConstants.bgColor);
 //...
 		addKeyListener(this);
 		setFocusable(true);
@@ -64,8 +64,8 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		
 		//ADD BORDER
         setBorder(new CompoundBorder(
-        		BorderFactory.createLineBorder(Constants.bgColor, Constants.margin), 
-        		BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth)));
+        		BorderFactory.createLineBorder(GameConstants.bgColor, GameConstants.margin), 
+        		BorderFactory.createLineBorder(GameConstants.acColor, GameConstants.lineWidth)));
 		
 		//SCORE LABEL
 		add(UiManager.score_LBL(0));
