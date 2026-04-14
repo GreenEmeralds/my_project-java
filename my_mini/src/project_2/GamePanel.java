@@ -6,10 +6,8 @@ import javax.swing.Timer;
 import javax.swing.border.CompoundBorder;
 
 import main.Constants;
-import main.ScreenController;
 import managers.IGameManager;
 import managers.UiManager;
-import panels.GameOverPanel;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -32,8 +30,6 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	private Player player;
 	private Spawner spawner;
 	
-	GameOverPanel gameOverPanel = new GameOverPanel();
-	
 	int score = 0;
 
 	public GamePanel(float SCREEN_X, float SCREEN_Y)
@@ -51,6 +47,10 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		//setVisible(true);
 
 		timer.stop();
+<<<<<<< Updated upstream
+=======
+		//gameOverPanel.initialize();
+>>>>>>> Stashed changes
 	}
 	
 //// BUTTON FUNCTIONS ///
@@ -137,8 +137,8 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	
 	public void gameOver()
 	{
-		timer.stop();
-		ScreenController.switchScene(gameOverPanel);
+		timer.stop();// important to stop all timer from running while on other panels!!!
+		gameOver(2);
 	}
 
 	@Override

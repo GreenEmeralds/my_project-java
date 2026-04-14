@@ -1,6 +1,11 @@
 package project_1;
 
 import javax.swing.BorderFactory;
+<<<<<<< Updated upstream
+=======
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+>>>>>>> Stashed changes
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.CompoundBorder;
@@ -8,7 +13,6 @@ import javax.swing.border.CompoundBorder;
 import main.Constants;
 import managers.IGameManager;
 import managers.UiManager;
-import panels.GameOverPanel;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -31,10 +35,20 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	private Ball ball;
 	private EnemyBlock enemyBlock;
 	
+<<<<<<< Updated upstream
 	GameOverPanel gameOverPanel = new GameOverPanel();
+=======
+	public static JLabel[] Hearts_LBL  = new JLabel[3];
+>>>>>>> Stashed changes
 	
 	int score = 0;
 	
+<<<<<<< Updated upstream
+=======
+	private ImageIcon heart_IMG;
+	
+	
+>>>>>>> Stashed changes
 	public GamePanel(float SCREEN_X, float SCREEN_Y)
 	{
 		setLayout(null);
@@ -51,6 +65,16 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		
 		timer.stop();
 		
+<<<<<<< Updated upstream
+=======
+		for(int i=0; i<3; i++)
+		{
+			Hearts_LBL[i] = new JLabel(heart_IMG);
+			Hearts_LBL[i].setBounds(Constants.margin + i*30, Constants.SCREEN_SIZE[1] - 50 - Constants.margin - 25, 50, 50);
+			Hearts_LBL[i].setFont(Constants.printFont);
+
+		}
+>>>>>>> Stashed changes
 	}
 ////BUTTON FUNCTIONS ///
 	
@@ -72,10 +96,13 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		timer.start();
 	}
 	
+<<<<<<< Updated upstream
 	public void setRestart()
 	{
 		timer.start();
 	}
+=======
+>>>>>>> Stashed changes
 
 	public void addUI()
 	{
@@ -91,7 +118,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 
 		//PAUSE BUTTON
 		add(UiManager.pause_BTN(this,this));
-		//System.out.println("pos: " + UiManager.score_LBL(0).geX);
+		//System.out.println("position: " + UiManager.score_LBL(0).geX);
 
 
 		//RESUME BUTTON
@@ -137,6 +164,23 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 			score++;
 			add(UiManager.score_LBL(score));	
 		}
+<<<<<<< Updated upstream
+=======
+		
+		if(ball.removeHeart == 1 && hearts >= 1)
+		{
+			ball.removeHeart = 2;
+			hearts -=1;
+			Hearts_LBL[hearts].setVisible(false);
+		}
+		
+		//GAME OVER no more hearts 
+		if(hearts == 0)
+		{
+			timer.stop();// important to stop all timer from running while on other panels!!!
+			gameOver(1);
+		}
+>>>>>>> Stashed changes
 	}
 
 	@Override

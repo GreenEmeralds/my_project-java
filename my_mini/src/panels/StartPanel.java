@@ -11,8 +11,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import main.Constants;
+import main.GameController;
 import main.ScreenController;
-import managers.IGameManager;
 
 public class StartPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -20,9 +20,10 @@ public class StartPanel extends JPanel{
 	
 	public static JButton backBtn = new JButton("< BACK >");
 	public static JButton[] Start_BTNs = new JButton[3];
+	public static JButton Start_BTN = new JButton("START");
 	int num=0;
 	
-	public StartPanel(JPanel[] game, IGameManager[] gameManager)
+	public StartPanel()
 	{
 		// BACKGROUND 
         // Create the inner border line effect
@@ -42,24 +43,25 @@ public class StartPanel extends JPanel{
         // START BUTTON 
 		int W = 300;
 		int H = 100;
+		
 		// NOTE: you can't change the already  start btn after it had been initialed // maybe JButton and Button class work differently
+		// RENOTE: Set new instance of StartPanel... 
 		
+		Start_BTN.setBounds(Constants.SCREEN_SIZE[0]/2 - W/2, Constants.SCREEN_SIZE[1]/2 -H/2 -25, W, H); // x y, w h 
 		
-		while(num<3)
-		{
-			Start_BTNs[num] = new JButton("START");
-			Start_BTNs[num].setBounds(Constants.SCREEN_SIZE[0]/2 - W/2, Constants.SCREEN_SIZE[1]/2 -H/2 -25, W, H); // x y, w h 
-			
-			Start_BTNs[num].setBorder(BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth));
-			Start_BTNs[num].setBackground(Constants.bgColor);
+		Start_BTN.setBorder(BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth));
+		Start_BTN.setBackground(Constants.bgColor);
 
-			Start_BTNs[num].setFont(Constants.titleFont);
-			
-			num++;
+		Start_BTN.setFont(Constants.titleFont);
+		
+		if(Start_BTN.getActionListeners().length > 0)
+		{
+			Start_BTN.removeActionListener(Start_BTN.getActionListeners()[0]);
 		}
-		// this might justr have to be indivituall because of action listner ... 
-		Start_BTNs[0].addActionListener(new ActionListener() {
+		
+		Start_BTN.addActionListener(new ActionListener() {
 			@Override
+<<<<<<< Updated upstream
 			public void actionPerformed(ActionEvent e) {
 				ScreenController.switchScene(game[0]);
                 // set start function from game panel
@@ -80,26 +82,22 @@ public class StartPanel extends JPanel{
 				ScreenController.switchScene(game[2]);
                 // set start function from game panel
 				gameManager[2].setStart();
+=======
+			public void actionPerformed(ActionEvent e) {		
+				GameController.gameStart();
+>>>>>>> Stashed changes
 			}	
 		});
+
+		initialize();
 		
 	}
 	
 
-	public void initialize(int gameNumber)
+	public void initialize()
 	{
 		// ADD COMPONEMTS
-		for(int i =0; i<3; i++)
-		{
-			if(gameNumber == i)
-			{
-				add(Start_BTNs[i]);
-			}
-			else
-			{
-				remove(Start_BTNs[i]);
-			}
-		}
+		add(Start_BTN);
         
         add(backBtn);		
 	}

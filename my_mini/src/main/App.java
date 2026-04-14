@@ -11,6 +11,7 @@ public class App{
 	  //initialize background components
 	  Constants.loadFont();
 	  ScreenController.setFrame(frame);
+	  GameController.setFrame(frame);
 
       // Configure frame properties
       frame.setSize(Constants.SCREEN_SIZE[0], Constants.SCREEN_SIZE[1]);
@@ -27,7 +28,11 @@ public class App{
       frame.addKeyListener(game_2);
       frame.addKeyListener(game_3);
       
+<<<<<<< Updated upstream
       MainMenu mainMenu = new MainMenu(frame,game_1, game_2, game_3);
+=======
+      MainMenu mainMenu = new MainMenu();
+>>>>>>> Stashed changes
       
       // add the Panel to the window
       frame.add(mainMenu);

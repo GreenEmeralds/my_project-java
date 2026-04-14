@@ -12,16 +12,27 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import main.Constants;
+<<<<<<< Updated upstream
 import main.ScreenController;
 import managers.IGameManager;
+=======
+import main.GameController;
+
+>>>>>>> Stashed changes
 
 public class GameOverPanel extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	
 	public static JButton backBtn = new JButton("< BACK >");
+<<<<<<< Updated upstream
 
 	public void initialize(JPanel game, IGameManager gameManager)
+=======
+	public static JButton Restart_BTN  = new JButton("RESTART");
+	
+	public GameOverPanel(int num)// num to get which game to start 
+>>>>>>> Stashed changes
 	{
 		// BACKGROUND 
         // Create the inner border line effect
@@ -37,6 +48,13 @@ public class GameOverPanel extends JPanel{
 		backBtn.setBorder(null);
 		backBtn.setFont(Constants.printFont);
 		backBtn.setBounds(0, Constants.SCREEN_SIZE[1] - 50 - Constants.margin - 25, 200, 50);
+		
+		backBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GameController.goToMain();
+			}	
+		});
         
 		//TEXT
 		JLabel GameOver_LBL = new JLabel();
@@ -52,14 +70,19 @@ public class GameOverPanel extends JPanel{
 		//RESTART BUTTON
 		int btn_W = 200;
 		int btn_H = 50;
+<<<<<<< Updated upstream
 		
 		JButton Restart_BTN  = new JButton("RESTART");
 		
+=======
+
+>>>>>>> Stashed changes
 		Restart_BTN.setBounds((int)Constants.getCenterPosX(btn_W), (int)Constants.getCenterPosY(btn_H)+Constants.margin, btn_W , btn_H); // x y, w h 
 		Restart_BTN.setBorder(BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth));
 		Restart_BTN.setBackground(Constants.bgColor);
 
 		Restart_BTN.setFont(Constants.headerFont);
+<<<<<<< Updated upstream
 
 		Restart_BTN.addActionListener(new ActionListener() {
 			@Override
@@ -85,5 +108,32 @@ public class GameOverPanel extends JPanel{
 				ScreenController.switchScene(mainMenu);
 			}	
 		});
+=======
+		
+		if(Restart_BTN.getActionListeners().length > 0)
+		{
+			Restart_BTN.removeActionListener(Restart_BTN.getActionListeners()[0]);
+		}
+		
+		Restart_BTN.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GameController.gameRestart(num);
+			}	
+		});
+		
+		//ADD TO PANEL
+		add(backBtn);
+		add(Restart_BTN);
+		add(GameOver_LBL);
+		
 	}
+	
+	public static void initialize()
+	{
+		//
+>>>>>>> Stashed changes
+	}
+	
+
 }
