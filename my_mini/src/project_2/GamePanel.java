@@ -8,6 +8,7 @@ import javax.swing.border.CompoundBorder;
 import main.GameConstants;
 import managers.IGameManager;
 import managers.UiManager;
+import panels.GameOverPanel;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -29,6 +30,8 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 
 	private Player player;
 	private Spawner spawner;
+	
+	GameOverPanel gameOverPanel = new GameOverPanel();
 	
 	int score = 0;
 
@@ -54,6 +57,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	public void setStart()
 	{
 		timer.start();
+		gameOverPanel.initialize(this,this);
 		addUI();
 		// in order for KeyListener to work properly 
 		requestFocusInWindow(); // Request focus for the panel
@@ -132,8 +136,8 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	
 	public void gameOver()
 	{
-		timer.stop();// important to stop all timer from running while on other panels!!!
-		gameOver(2);
+		timer.stop();
+		ScreenController.switchScene(gameOverPanel);
 	}
 
 	@Override

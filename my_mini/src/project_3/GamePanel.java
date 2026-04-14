@@ -8,6 +8,7 @@ import javax.swing.border.CompoundBorder;
 import main.GameConstants;
 import managers.IGameManager;
 import managers.UiManager;
+import panels.GameOverPanel;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -17,7 +18,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 
 	Timer timer = new Timer(5,this);
 
-	//GameOverPanel gameOverPanel = new GameOverPanel();
+	GameOverPanel gameOverPanel = new GameOverPanel();
 	
 	public GamePanel(float SCREEN_X, float SCREEN_Y)
 	{
@@ -26,16 +27,13 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 //...
 		addKeyListener(this);
 		setFocusable(true);
+
+		gameOverPanel.initialize(this,this);
 		
 		timer.stop();
 		
 	}
 ////BUTTON FUNCTIONS ///
-	
-	public JPanel getGame()
-	{
-		return this;
-	}
 	
 	public void setStart()
 	{

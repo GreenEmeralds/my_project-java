@@ -19,9 +19,8 @@ public class GameOverPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	public static JButton backBtn = new JButton("< BACK >");
-	public static JButton Restart_BTN  = new JButton("RESTART");
-	
-	public GameOverPanel(int num)// num to get which game to start 
+
+	public void initialize(JPanel game, IGameManager gameManager)
 	{
 		// BACKGROUND 
         // Create the inner border line effect
@@ -74,21 +73,26 @@ public class GameOverPanel extends JPanel{
 		Restart_BTN.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameController.gameRestart(num);
+				ScreenController.switchScene(game);
+				gameManager.setRestart();
 			}	
 		});
 		
 		//ADD TO PANEL
 		add(backBtn);
-		add(Restart_BTN);
 		add(GameOver_LBL);
+		add(Restart_BTN);
 		
 	}
 	
-	public static void initialize()
+	public static void setBackButton(JPanel mainMenu)
 	{
-		//
+        backBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("back");
+				ScreenController.switchScene(mainMenu);
+			}	
+		});
 	}
-	
-
 }

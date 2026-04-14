@@ -1,9 +1,13 @@
 package main;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import managers.IGameManager;
+import managers.UiManager;
+import panels.GameOverPanel;
 import panels.StartPanel;
 
 import java.awt.event.*;
@@ -20,8 +24,9 @@ public class MainMenu extends JPanel{
     int[] PNL_SIZE = {GameConstants.mainBTN_Dimension[0]+10,GameConstants.mainBTN_Dimension[1]*3+20};
     
     JButton[] btns = new JButton[3];
+    StartPanel startPanel;
     
-    public MainMenu()
+    public MainMenu(JFrame f, project_1.GamePanel game_1, project_2.GamePanel game_2, project_3.GamePanel game_3)
     {
     	setLayout(null);
     	setBackground(GameConstants.bgColor);
@@ -31,7 +36,8 @@ public class MainMenu extends JPanel{
     	AddExit(0, GameConstants.SCREEN_SIZE[1]- 50 - GameConstants.margin - 25,200,50);
     	
     	StartPanel.setBackButton(this);
-    	GameController.setMainMenu(this);
+    	GameOverPanel.setBackButton(this);
+    	UiManager.setBackButton(this);
     }
 
 
@@ -60,8 +66,12 @@ public class MainMenu extends JPanel{
         add(headerLabel);
     }
 
-    void AddButtons(int x, int y, int w, int h)
+    void AddButtons(int x, int y, int w, int h, JFrame f, JPanel game_1, JPanel game_2, JPanel game_3)
     {
+    	// Initialize start button game system ...
+    	JPanel[] games = {game_1,game_2,game_3};
+    	IGameManager[] gameManagers = {(IGameManager)game_1,(IGameManager)game_2,(IGameManager)game_3};
+    	startPanel = new StartPanel(games,gameManagers);
     	
     	// Create Buttons
         JPanel panel = new JPanel();
@@ -93,21 +103,27 @@ public class MainMenu extends JPanel{
     		
             public void actionPerformed(ActionEvent e)
             {
-            	GameController.startGame(1);
+            	startPanel.initialize(0);
+            	ScreenController.switchScene(startPanel);    
+            	System.out.println("game1");
             }
         });
     	
     	btns[1].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
-            	GameController.startGame(2);
+            	startPanel.initialize(1);
+            	ScreenController.switchScene(startPanel); 
+            	System.out.println("game2");
             }
         });
     	
     	btns[2].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
-            	GameController.startGame(3);
+            	startPanel.initialize(2);
+            	ScreenController.switchScene(startPanel);
+            	System.out.println("game3");
             }
         });
     	

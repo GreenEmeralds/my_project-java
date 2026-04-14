@@ -1,9 +1,6 @@
 package project_1;
 
 import javax.swing.BorderFactory;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.CompoundBorder;
@@ -11,6 +8,7 @@ import javax.swing.border.CompoundBorder;
 import main.GameConstants;
 import managers.IGameManager;
 import managers.UiManager;
+import panels.GameOverPanel;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -33,11 +31,9 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	private Ball ball;
 	private EnemyBlock enemyBlock;
 	
-	public static JLabel[] Hearts_LBL  = new JLabel[3];
+	GameOverPanel gameOverPanel = new GameOverPanel();
 	
 	int score = 0;
-	int hearts = 3;
-	
 	
 	public GamePanel(float SCREEN_X, float SCREEN_Y)
 	{
@@ -50,6 +46,8 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		
 		addKeyListener(this);
 		setFocusable(true);
+
+		gameOverPanel.initialize(this,this);
 		
 		timer.stop();
 	}
@@ -77,6 +75,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	{
 		timer.start();
 	}
+
 	public void addUI()
 	{
 		//Note: order matters	
@@ -100,7 +99,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 
 		//PAUSE BUTTON
 		add(UiManager.pause_BTN(this,this));
-		//System.out.println("position: " + UiManager.score_LBL(0).geX);
+		//System.out.println("pos: " + UiManager.score_LBL(0).geX);
 
 
 		//RESUME BUTTON
@@ -146,21 +145,6 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 			score++;
 			add(UiManager.score_LBL(score));	
 		}
-
-		if(ball.removeHeart == 1 && hearts >= 1)
-		{
-			ball.removeHeart = 2;
-			hearts -=1;
-			Hearts_LBL[hearts].setVisible(false);
-		}
-		
-		//GAME OVER no more hearts 
-		if(hearts == 0)
-		{
-			timer.stop();// important to stop all timer from running while on other panels!!!
-			gameOver(1);
-		}
-
 	}
 
 	@Override
