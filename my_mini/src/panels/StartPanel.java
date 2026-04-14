@@ -61,8 +61,31 @@ public class StartPanel extends JPanel{
 		
 		Start_BTN.addActionListener(new ActionListener() {
 			@Override
+<<<<<<< Updated upstream
+			public void actionPerformed(ActionEvent e) {
+				ScreenController.switchScene(game[0]);
+                // set start function from game panel
+				gameManager[0].setStart();
+			}	
+		});
+		Start_BTNs[1].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ScreenController.switchScene(game[1]);
+                // set start function from game panel
+				gameManager[1].setStart();
+			}	
+		});
+		Start_BTNs[2].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ScreenController.switchScene(game[2]);
+                // set start function from game panel
+				gameManager[2].setStart();
+=======
 			public void actionPerformed(ActionEvent e) {		
 				GameController.gameStart();
+>>>>>>> Stashed changes
 			}	
 		});
 
