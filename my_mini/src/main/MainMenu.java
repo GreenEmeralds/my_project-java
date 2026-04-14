@@ -24,9 +24,9 @@ public class MainMenu extends JPanel{
     public MainMenu()
     {
     	setLayout(null);
-    	setBackground(GameConstants.bgColor);
-    	CreateTitle(0,GameConstants.margin,TITLE_SIZE[0],TITLE_SIZE[1]);
-    	AddButtons((int)GameConstants.getCenterPosX(PNL_SIZE[0]),TITLE_SIZE[1]+HEADER_SIZE[1]+GameConstants.margin*2,PNL_SIZE[0],PNL_SIZE[1]);
+    	setBackground(Constants.bgColor);
+    	CreateTitle(0,Constants.margin,TITLE_SIZE[0],TITLE_SIZE[1]);
+    	AddButtons((int)Constants.getCenterPosX(PNL_SIZE[0]),TITLE_SIZE[1]+HEADER_SIZE[1]+Constants.margin*2,PNL_SIZE[0],PNL_SIZE[1]);
     	//
     	AddExit(0, GameConstants.SCREEN_SIZE[1]- 50 - GameConstants.margin - 25,200,50);
     	

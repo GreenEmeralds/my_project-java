@@ -1,7 +1,6 @@
 package project_1;
 
 import javax.swing.BorderFactory;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -36,7 +35,8 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	public static JLabel[] Hearts_LBL  = new JLabel[3];
 	
 	int score = 0;
-	int hearts = 3;
+	
+	private ImageIcon heart_IMG;
 	
 	
 	public GamePanel(float SCREEN_X, float SCREEN_Y)
@@ -50,8 +50,18 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		
 		addKeyListener(this);
 		setFocusable(true);
+
+		gameOverPanel.initialize(this,this);
 		
 		timer.stop();
+		
+		for(int i=0; i<3; i++)
+		{
+			Hearts_LBL[i] = new JLabel(heart_IMG);
+			Hearts_LBL[i].setBounds(Constants.margin + i*30, Constants.SCREEN_SIZE[1] - 50 - Constants.margin - 25, 50, 50);
+			Hearts_LBL[i].setFont(Constants.printFont);
+
+		}
 	}
 ////BUTTON FUNCTIONS ///
 	
@@ -73,10 +83,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		timer.start();
 	}
 	
-	public void setRestart()
-	{
-		timer.start();
-	}
+
 	public void addUI()
 	{
 		//Note: order matters	
@@ -146,7 +153,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 			score++;
 			add(UiManager.score_LBL(score));	
 		}
-
+		
 		if(ball.removeHeart == 1 && hearts >= 1)
 		{
 			ball.removeHeart = 2;
@@ -160,7 +167,6 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 			timer.stop();// important to stop all timer from running while on other panels!!!
 			gameOver(1);
 		}
-
 	}
 
 	@Override

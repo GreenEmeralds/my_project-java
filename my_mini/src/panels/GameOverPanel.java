@@ -11,8 +11,9 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import main.GameConstants;
+import main.Constants;
 import main.GameController;
+
 
 public class GameOverPanel extends JPanel{
 	
@@ -59,12 +60,11 @@ public class GameOverPanel extends JPanel{
 		//RESTART BUTTON
 		int btn_W = 200;
 		int btn_H = 50;
+		Restart_BTN.setBounds((int)Constants.getCenterPosX(btn_W), (int)Constants.getCenterPosY(btn_H)+Constants.margin, btn_W , btn_H); // x y, w h 
+		Restart_BTN.setBorder(BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth));
+		Restart_BTN.setBackground(Constants.bgColor);
 
-		Restart_BTN.setBounds((int)GameConstants.getCenterPosX(btn_W), (int)GameConstants.getCenterPosY(btn_H)+GameConstants.margin, btn_W , btn_H); // x y, w h 
-		Restart_BTN.setBorder(BorderFactory.createLineBorder(GameConstants.acColor, GameConstants.lineWidth));
-		Restart_BTN.setBackground(GameConstants.bgColor);
-
-		Restart_BTN.setFont(GameConstants.headerFont);
+		Restart_BTN.setFont(Constants.headerFont);
 		
 		if(Restart_BTN.getActionListeners().length > 0)
 		{
