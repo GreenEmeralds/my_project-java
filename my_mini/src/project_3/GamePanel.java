@@ -8,7 +8,6 @@ import javax.swing.border.CompoundBorder;
 import main.Constants;
 import managers.IGameManager;
 import managers.UiManager;
-import panels.GameOverPanel;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -27,8 +26,6 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 //...
 		addKeyListener(this);
 		setFocusable(true);
-
-		gameOverPanel.initialize(this,this);
 		
 		timer.stop();
 		

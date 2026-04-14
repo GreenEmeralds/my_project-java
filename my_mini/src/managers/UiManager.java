@@ -14,7 +14,7 @@ public class UiManager{
 	public static JButton Pause_BTN  = new JButton("PAUSE");
 	public static JButton Resume_BTN  = new JButton("RESUME");
 	
-	public static JButton Back_BTN  = new JButton("BACK");
+	public static JButton Back_BTN  = new JButton("MAIN MENU");
 
 	public static JLabel Score_LBL  = new JLabel("SCORE:");
 

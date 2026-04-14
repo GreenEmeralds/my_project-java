@@ -47,10 +47,6 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		//setVisible(true);
 
 		timer.stop();
-<<<<<<< Updated upstream
-=======
-		//gameOverPanel.initialize();
->>>>>>> Stashed changes
 	}
 	
 //// BUTTON FUNCTIONS ///
@@ -58,7 +54,6 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	public void setStart()
 	{
 		timer.start();
-		gameOverPanel.initialize(this,this);
 		addUI();
 		// in order for KeyListener to work properly 
 		requestFocusInWindow(); // Request focus for the panel
