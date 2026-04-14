@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import main.Constants;
+import main.GameConstants;
 import main.GameController;
 
 public class UiManager{ 
@@ -23,8 +23,8 @@ public class UiManager{
 		int W = 200;
 		int H = 50;
 		
-		Pause_BTN.setBounds(Constants.SCREEN_SIZE[0]-W - Constants.margin - Constants.margin , Constants.margin, W, H); // x y, w h 
-		Pause_BTN.setFont(Constants.printFont);
+		Pause_BTN.setBounds(GameConstants.SCREEN_SIZE[0]-W - GameConstants.margin - GameConstants.margin , GameConstants.margin, W, H); // x y, w h 
+		Pause_BTN.setFont(GameConstants.printFont);
 		Pause_BTN.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		Pause_BTN.setBorder(null);
@@ -48,8 +48,8 @@ public class UiManager{
 		int W = 100;
 		int H = 50;
 		
-		Resume_BTN.setBounds(Constants.SCREEN_SIZE[0]-W- Constants.margin-Constants.margin , Constants.margin, W, H); // x y, w h 
-		Resume_BTN.setFont(Constants.printFont);
+		Resume_BTN.setBounds(GameConstants.SCREEN_SIZE[0]-W- GameConstants.margin-GameConstants.margin , GameConstants.margin, W, H); // x y, w h 
+		Resume_BTN.setFont(GameConstants.printFont);
 		Resume_BTN.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		Resume_BTN.setBorder(null);
@@ -73,8 +73,8 @@ public class UiManager{
 		int W = 200;
 		int H = 100;
 		
-		Back_BTN.setBounds(Constants.SCREEN_SIZE[0]-W- Constants.margin-Constants.margin, Constants.SCREEN_SIZE[1]-H- Constants.margin, W, H); // x y, w h 
-		Back_BTN.setFont(Constants.printFont);
+		Back_BTN.setBounds(GameConstants.SCREEN_SIZE[0]-W- GameConstants.margin-GameConstants.margin, GameConstants.SCREEN_SIZE[1]-H- GameConstants.margin, W, H); // x y, w h 
+		Back_BTN.setFont(GameConstants.printFont);
 		Back_BTN.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		Back_BTN.setBorder(null);
@@ -95,8 +95,8 @@ public class UiManager{
 
 	public static JLabel score_LBL(int score)
 	{
-		Score_LBL.setBounds(Constants.margin+Constants.margin, Constants.margin, 200, 50);
-		Score_LBL.setFont(Constants.printFont);
+		Score_LBL.setBounds(GameConstants.margin+GameConstants.margin, GameConstants.margin, 200, 50);
+		Score_LBL.setFont(GameConstants.printFont);
 
 		Score_LBL.setText("SCORE: "+ score);
 		return Score_LBL;

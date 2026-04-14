@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
-import main.Constants;
+import main.GameConstants;
 
 public class Ball {//extends GameObject{
 
@@ -74,12 +74,12 @@ public class Ball {//extends GameObject{
         this.REC_HEIGHT = REC_HEIGHT;
         
         //BOUNDS_X (left to right)
-        BOUNDS[0][0] = Constants.margin + 5;
-        BOUNDS[0][1] = Constants.SCREEN_SIZE[0] - REC_WIDTH - 5 - Constants.margin;
+        BOUNDS[0][0] = GameConstants.margin + 5;
+        BOUNDS[0][1] = GameConstants.SCREEN_SIZE[0] - REC_WIDTH - 5 - GameConstants.margin;
         
         //BOUNDS_Y (top to bottom)
-        BOUNDS[1][0] = Constants.margin+5;
-        BOUNDS[1][1] = Constants.SCREEN_SIZE[1] - REC_HEIGHT  - 35 - Constants.margin;
+        BOUNDS[1][0] = GameConstants.margin+5;
+        BOUNDS[1][1] = GameConstants.SCREEN_SIZE[1] - REC_HEIGHT  - 35 - GameConstants.margin;
     }
     
 	public void addScore()
@@ -98,7 +98,7 @@ public class Ball {//extends GameObject{
     	initialPos = POSITION;
     	Graphics2D g2d = (Graphics2D) g;
         
-        g2d.setColor(Constants.acColor);
+        g2d.setColor(GameConstants.acColor);
         Ellipse2D.Float r2 = new Ellipse2D.Float(POSITION[0],POSITION[1],REC_WIDTH,REC_HEIGHT);
         g2d.fill(r2);
     } 
@@ -143,7 +143,7 @@ public class Ball {//extends GameObject{
     		VEL = setVEL(45);
     		POSITION[1] = BOUNDS[1][1]-.1f;
     		
-    		float[] newpos = {Constants.getCenterPosX(REC_WIDTH),Constants.getCenterPosY(REC_WIDTH)};
+    		float[] newpos = {GameConstants.getCenterPosX(REC_WIDTH),GameConstants.getCenterPosY(REC_WIDTH)};
     		setPosition(newpos);
     		removeHeart();
     	}

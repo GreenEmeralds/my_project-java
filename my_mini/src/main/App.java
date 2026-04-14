@@ -9,12 +9,12 @@ public class App{
 	  frame.setTitle( "My Mini" );
 	  
 	  //initialize background components
-	  Constants.loadFont();
+	  GameConstants.loadFont();
 	  ScreenController.setFrame(frame);
 	  GameController.setFrame(frame);
 
       // Configure frame properties
-      frame.setSize(Constants.SCREEN_SIZE[0], Constants.SCREEN_SIZE[1]);
+      frame.setSize(GameConstants.SCREEN_SIZE[0], GameConstants.SCREEN_SIZE[1]);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.setLocationRelativeTo(null); // Center the window from Google
       

@@ -15,20 +15,20 @@ public class MainMenu extends JPanel{
     
     String TITLE = "< MY MINI GAMES >";
     String HEADER = "BY GREEN EMERALDS";
-    int[] TITLE_SIZE = {Constants.SCREEN_SIZE[0],80};
-    int[] HEADER_SIZE = {Constants.SCREEN_SIZE[0],30};
-    int[] PNL_SIZE = {Constants.mainBTN_Dimension[0]+10,Constants.mainBTN_Dimension[1]*3+20};
+    int[] TITLE_SIZE = {GameConstants.SCREEN_SIZE[0],80};
+    int[] HEADER_SIZE = {GameConstants.SCREEN_SIZE[0],30};
+    int[] PNL_SIZE = {GameConstants.mainBTN_Dimension[0]+10,GameConstants.mainBTN_Dimension[1]*3+20};
     
     JButton[] btns = new JButton[3];
     
     public MainMenu()
     {
     	setLayout(null);
-    	setBackground(Constants.bgColor);
-    	CreateTitle(0,Constants.margin,TITLE_SIZE[0],TITLE_SIZE[1]);
-    	AddButtons((int)Constants.getCenterPosX(PNL_SIZE[0]),TITLE_SIZE[1]+HEADER_SIZE[1]+Constants.margin*2,PNL_SIZE[0],PNL_SIZE[1]);
+    	setBackground(GameConstants.bgColor);
+    	CreateTitle(0,GameConstants.margin,TITLE_SIZE[0],TITLE_SIZE[1]);
+    	AddButtons((int)GameConstants.getCenterPosX(PNL_SIZE[0]),TITLE_SIZE[1]+HEADER_SIZE[1]+GameConstants.margin*2,PNL_SIZE[0],PNL_SIZE[1]);
     	//
-    	AddExit(0, Constants.SCREEN_SIZE[1]- 50 - Constants.margin - 25,200,50);
+    	AddExit(0, GameConstants.SCREEN_SIZE[1]- 50 - GameConstants.margin - 25,200,50);
     	
     	StartPanel.setBackButton(this);
     	GameController.setMainMenu(this);
@@ -39,8 +39,8 @@ public class MainMenu extends JPanel{
     {
         // Create Title label
         JLabel titleLabel = new JLabel(TITLE);
-        titleLabel.setFont(Constants.titleFont);
-        titleLabel.setBackground(Constants.bgColor);
+        titleLabel.setFont(GameConstants.titleFont);
+        titleLabel.setBackground(GameConstants.bgColor);
         titleLabel.setOpaque(true);
         titleLabel.setBounds(x,y, w, h);
         
@@ -48,10 +48,10 @@ public class MainMenu extends JPanel{
         
         // Create header label
         JLabel headerLabel = new JLabel(HEADER);
-        headerLabel.setFont(Constants.printFont);
-        headerLabel.setBackground(Constants.bgColor);
+        headerLabel.setFont(GameConstants.printFont);
+        headerLabel.setBackground(GameConstants.bgColor);
         headerLabel.setOpaque(true);
-        headerLabel.setBounds(0,TITLE_SIZE[1]+Constants.margin, HEADER_SIZE[0], HEADER_SIZE[1]);
+        headerLabel.setBounds(0,TITLE_SIZE[1]+GameConstants.margin, HEADER_SIZE[0], HEADER_SIZE[1]);
         
         headerLabel.setHorizontalAlignment(0);//center text
         
@@ -66,7 +66,7 @@ public class MainMenu extends JPanel{
     	// Create Buttons
         JPanel panel = new JPanel();
         //panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
-        panel.setBackground(Constants.bgColor);
+        panel.setBackground(GameConstants.bgColor);
         panel.setBounds(x,y, w, h);
     
         JButton[] btns = new JButton[3];
@@ -80,10 +80,10 @@ public class MainMenu extends JPanel{
         
         for(JButton btn : btns)
         {
-        	btn.setBorder(BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth));
-        	btn.setBackground(Constants.bgColor);
-            btn.setPreferredSize(new Dimension(Constants.mainBTN_Dimension[0],Constants.mainBTN_Dimension[1]));
-            btn.setFont(Constants.headerFont);
+        	btn.setBorder(BorderFactory.createLineBorder(GameConstants.acColor, GameConstants.lineWidth));
+        	btn.setBackground(GameConstants.bgColor);
+            btn.setPreferredSize(new Dimension(GameConstants.mainBTN_Dimension[0],GameConstants.mainBTN_Dimension[1]));
+            btn.setFont(GameConstants.headerFont);
             panel.add(btn);
         }
         
@@ -119,7 +119,7 @@ public class MainMenu extends JPanel{
         JButton exitBtn = new JButton("< EXIT >");
         
         exitBtn.setBorder(null);
-        exitBtn.setFont(Constants.printFont);
+        exitBtn.setFont(GameConstants.printFont);
         exitBtn.setBounds(x, y, w, h);
         
         add(exitBtn);
