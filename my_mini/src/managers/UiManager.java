@@ -70,7 +70,7 @@ public class UiManager{
 	public static JButton back_BTN(JPanel game_pnl, IGameManager gameManager)
 	{
 		Back_BTN.setVisible(false);
-		int W = 200;
+		int W = 100;
 		int H = 100;
 		
 		Back_BTN.setBounds(GameConstants.SCREEN_SIZE[0]-W- GameConstants.margin-GameConstants.margin, GameConstants.SCREEN_SIZE[1]-H- GameConstants.margin, W, H); // x y, w h 
@@ -78,20 +78,23 @@ public class UiManager{
 		Back_BTN.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		Back_BTN.setBorder(null);
+
+		return Back_BTN;
 		
+	}
+	public static void setBackButton(JPanel mainMenu)
+	{
 		Back_BTN.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Pause_BTN.setVisible(true);
 				Resume_BTN.setVisible(false);
-				Back_BTN.setVisible(false);			
-				GameController.goToMain();
+				Back_BTN.setVisible(false);
+				ScreenController.switchScene(mainMenu);
 			}	
 		});
-
-		return Back_BTN;
-		
 	}
+
 
 	public static JLabel score_LBL(int score)
 	{

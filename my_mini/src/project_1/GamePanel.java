@@ -10,6 +10,7 @@ import javax.swing.border.CompoundBorder;
 import main.GameConstants;
 import managers.IGameManager;
 import managers.UiManager;
+import panels.GameOverPanel;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -55,13 +56,6 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		
 		timer.stop();
 		
-		for(int i=0; i<3; i++)
-		{
-			Hearts_LBL[i] = new JLabel(heart_IMG);
-			Hearts_LBL[i].setBounds(Constants.margin + i*30, Constants.SCREEN_SIZE[1] - 50 - Constants.margin - 25, 50, 50);
-			Hearts_LBL[i].setFont(Constants.printFont);
-
-		}
 	}
 ////BUTTON FUNCTIONS ///
 	
@@ -107,7 +101,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 
 		//PAUSE BUTTON
 		add(UiManager.pause_BTN(this,this));
-		//System.out.println("position: " + UiManager.score_LBL(0).geX);
+		//System.out.println("pos: " + UiManager.score_LBL(0).geX);
 
 
 		//RESUME BUTTON

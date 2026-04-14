@@ -1,9 +1,13 @@
 package main;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import managers.IGameManager;
+import managers.UiManager;
+import panels.GameOverPanel;
 import panels.StartPanel;
 
 import java.awt.event.*;
@@ -20,6 +24,7 @@ public class MainMenu extends JPanel{
     int[] PNL_SIZE = {GameConstants.mainBTN_Dimension[0]+10,GameConstants.mainBTN_Dimension[1]*3+20};
     
     JButton[] btns = new JButton[3];
+    StartPanel startPanel;
     
     public MainMenu()
     {

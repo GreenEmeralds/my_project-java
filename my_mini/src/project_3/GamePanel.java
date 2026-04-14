@@ -18,7 +18,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 
 	Timer timer = new Timer(5,this);
 
-	//GameOverPanel gameOverPanel = new GameOverPanel();
+	GameOverPanel gameOverPanel = new GameOverPanel();
 	
 	public GamePanel(float SCREEN_X, float SCREEN_Y)
 	{
@@ -34,11 +34,6 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		
 	}
 ////BUTTON FUNCTIONS ///
-	
-	public JPanel getGame()
-	{
-		return this;
-	}
 	
 	public void setStart()
 	{
