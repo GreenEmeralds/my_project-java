@@ -11,7 +11,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import main.GameConstants;
+import main.Constants;
 import main.GameController;
 
 public class GameOverPanel extends JPanel{
@@ -25,18 +25,18 @@ public class GameOverPanel extends JPanel{
 	{
 		// BACKGROUND 
         // Create the inner border line effect
-        EmptyBorder paddingBorder = new EmptyBorder(GameConstants.margin, GameConstants.margin, GameConstants.margin, GameConstants.margin);
-        LineBorder lineBorder = new LineBorder(GameConstants.acColor, 3); // 2-pixel blue line
+        EmptyBorder paddingBorder = new EmptyBorder(Constants.margin, Constants.margin, Constants.margin, Constants.margin);
+        LineBorder lineBorder = new LineBorder(Constants.acColor, 3); // 2-pixel blue line
         CompoundBorder innerLineBorder = new CompoundBorder(paddingBorder, lineBorder);
         
         setLayout(null);
-        setBackground(GameConstants.bgColor);
+        setBackground(Constants.bgColor);
         setBorder(innerLineBorder);
         
         // BACK BUTTON 
 		backBtn.setBorder(null);
-		backBtn.setFont(GameConstants.printFont);
-		backBtn.setBounds(0, GameConstants.SCREEN_SIZE[1] - 50 - GameConstants.margin - 25, 200, 50);
+		backBtn.setFont(Constants.printFont);
+		backBtn.setBounds(0, Constants.SCREEN_SIZE[1] - 50 - Constants.margin - 25, 200, 50);
 		
 		backBtn.addActionListener(new ActionListener() {
 			@Override
@@ -51,20 +51,20 @@ public class GameOverPanel extends JPanel{
 		int text_W = 300;
 		int text_H = 100;
 
-		GameOver_LBL.setBounds((int)GameConstants.getCenterPosX(text_W), (int)GameConstants.getCenterPosY(text_H)- 40, text_W , text_H); // x y, w h 
+		GameOver_LBL.setBounds((int)Constants.getCenterPosX(text_W), (int)Constants.getCenterPosY(text_H)- 40, text_W , text_H); // x y, w h 
 		GameOver_LBL.setText("GAME OVER");
-		GameOver_LBL.setFont(GameConstants.titleFont);
-		GameOver_LBL.setBackground(GameConstants.bgColor);
+		GameOver_LBL.setFont(Constants.titleFont);
+		GameOver_LBL.setBackground(Constants.bgColor);
 
 		//RESTART BUTTON
 		int btn_W = 200;
 		int btn_H = 50;
 
-		Restart_BTN.setBounds((int)GameConstants.getCenterPosX(btn_W), (int)GameConstants.getCenterPosY(btn_H)+GameConstants.margin, btn_W , btn_H); // x y, w h 
-		Restart_BTN.setBorder(BorderFactory.createLineBorder(GameConstants.acColor, GameConstants.lineWidth));
-		Restart_BTN.setBackground(GameConstants.bgColor);
+		Restart_BTN.setBounds((int)Constants.getCenterPosX(btn_W), (int)Constants.getCenterPosY(btn_H)+Constants.margin, btn_W , btn_H); // x y, w h 
+		Restart_BTN.setBorder(BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth));
+		Restart_BTN.setBackground(Constants.bgColor);
 
-		Restart_BTN.setFont(GameConstants.headerFont);
+		Restart_BTN.setFont(Constants.headerFont);
 		
 		if(Restart_BTN.getActionListeners().length > 0)
 		{

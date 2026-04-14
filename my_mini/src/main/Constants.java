@@ -7,7 +7,7 @@ import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class GameConstants { 
+public class Constants { 
 	
 	public static int[] SCREEN_SIZE = {1000,600};
 	
@@ -23,7 +23,7 @@ public class GameConstants {
         if (myFont == null) {
         	try{
         		// Load the font from a file 
-    			InputStream is = GameConstants.class.getResourceAsStream("/fonts/PressStart2PRegular.ttf");
+    			InputStream is = Constants.class.getResourceAsStream("/fonts/PressStart2PRegular.ttf");
     			//System.out.println(Constants.class.getResourceAsStream("/PressStart2PRegular.ttf"));
     			myFont = Font.createFont(Font.TRUETYPE_FONT, is);
     			myFont = myFont.deriveFont(12);

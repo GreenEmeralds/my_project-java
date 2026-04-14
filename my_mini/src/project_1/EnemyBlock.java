@@ -3,8 +3,7 @@ package project_1;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
-import main.GameConstants;
-
+import main.Constants;
 
 public class EnemyBlock {
 	int SPEED_X = 10;
@@ -33,7 +32,7 @@ public class EnemyBlock {
     {
         Graphics2D g2d = (Graphics2D) g;
         
-        g2d.setColor(GameConstants.acColor);
+        g2d.setColor(Constants.acColor);
         Rectangle2D.Float r2 = new Rectangle2D.Float(POS_X,POS_Y,REC_WIDTH,REC_HEIGHT);
         g2d.fill(r2);
     } 

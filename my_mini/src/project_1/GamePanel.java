@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.CompoundBorder;
 
-import main.GameConstants;
+import main.Constants;
 import managers.IGameManager;
 import managers.UiManager;
 
@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 
 	static int BLOCK_WIDTH = 100;
 	static int BLOCK_HEIGHT = 25;
-	static int SCREEN_GAP = 35+GameConstants.margin;
+	static int SCREEN_GAP = 35+Constants.margin;
 	static int BALL_SCALE = 30;
 
 	private Player player;
@@ -42,7 +42,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	public GamePanel(float SCREEN_X, float SCREEN_Y)
 	{
 		setLayout(null);
-		setBackground(GameConstants.bgColor);
+		setBackground(Constants.bgColor);
 		
 		player = new Player(BLOCK_WIDTH,BLOCK_HEIGHT,(SCREEN_X/2- BLOCK_WIDTH/2),(SCREEN_Y-SCREEN_GAP-BLOCK_HEIGHT*2));
 		ball = new Ball(BALL_SCALE,BALL_SCALE,(SCREEN_X/2-BALL_SCALE),(SCREEN_Y/2-BALL_SCALE));
@@ -52,6 +52,14 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 		setFocusable(true);
 		
 		timer.stop();
+		
+		for(int i=0; i<3; i++)
+		{
+			Hearts_LBL[i] = new JLabel(new ImageIcon("coin.gif"));
+			Hearts_LBL[i].setBounds(Constants.margin + i*30, Constants.SCREEN_SIZE[1] - 50 - Constants.margin - 25, 50, 50);
+			Hearts_LBL[i].setFont(Constants.printFont);
+			Hearts_LBL[i].setVisible(true);
+		}
 	}
 ////BUTTON FUNCTIONS ///
 	
@@ -81,19 +89,10 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener,IGam
 	{
 		//Note: order matters	
 		
-		//ADD HEARTS
-				for(int i=0; i<3; i++)
-				{
-					Hearts_LBL[i] = new JLabel(new ImageIcon(getClass().getResource("/coin.gif")));
-					Hearts_LBL[i].setBounds(GameConstants.margin + i*30, GameConstants.SCREEN_SIZE[1] - 50 - GameConstants.margin - 25, 50, 50);
-					Hearts_LBL[i].setFont(GameConstants.printFont);
-					add(Hearts_LBL[i]);
-				}
-				
 		//ADD BORDER
         setBorder(new CompoundBorder(
-        		BorderFactory.createLineBorder(GameConstants.bgColor, GameConstants.margin), 
-        		BorderFactory.createLineBorder(GameConstants.acColor, GameConstants.lineWidth)));
+        		BorderFactory.createLineBorder(Constants.bgColor, Constants.margin), 
+        		BorderFactory.createLineBorder(Constants.acColor, Constants.lineWidth)));
 		
 		//SCORE LABEL
 		add(UiManager.score_LBL(0));

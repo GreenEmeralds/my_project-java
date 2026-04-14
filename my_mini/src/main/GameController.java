@@ -35,15 +35,15 @@ public class GameController {
 		
         if(num == 1 )
         {
-        	Game =  new project_1.GamePanel(GameConstants.SCREEN_SIZE[0],GameConstants.SCREEN_SIZE[1]);
+        	Game =  new project_1.GamePanel(Constants.SCREEN_SIZE[0],Constants.SCREEN_SIZE[1]);
         }
         else if(num == 2 )
         {
-        	Game = new project_2.GamePanel(GameConstants.SCREEN_SIZE[0],GameConstants.SCREEN_SIZE[1]);
+        	Game = new project_2.GamePanel(Constants.SCREEN_SIZE[0],Constants.SCREEN_SIZE[1]);
         }
         else if (num == 3 )
         {
-        	Game = new project_3.GamePanel(GameConstants.SCREEN_SIZE[0],GameConstants.SCREEN_SIZE[1]);
+        	Game = new project_3.GamePanel(Constants.SCREEN_SIZE[0],Constants.SCREEN_SIZE[1]);
 			
         }
         
@@ -64,15 +64,15 @@ public class GameController {
 	{
         if(num == 1 )
         {
-        	Game =  new project_1.GamePanel(GameConstants.SCREEN_SIZE[0],GameConstants.SCREEN_SIZE[1]);
+        	Game =  new project_1.GamePanel(Constants.SCREEN_SIZE[0],Constants.SCREEN_SIZE[1]);
         }
         else if(num == 2 )
         {
-        	Game = new project_2.GamePanel(GameConstants.SCREEN_SIZE[0],GameConstants.SCREEN_SIZE[1]);
+        	Game = new project_2.GamePanel(Constants.SCREEN_SIZE[0],Constants.SCREEN_SIZE[1]);
         }
         else if (num == 3 )
         {
-        	Game = new project_3.GamePanel(GameConstants.SCREEN_SIZE[0],GameConstants.SCREEN_SIZE[1]);
+        	Game = new project_3.GamePanel(Constants.SCREEN_SIZE[0],Constants.SCREEN_SIZE[1]);
 			
         }
         f.addKeyListener((KeyListener) Game); // pass keyboard inputs to the Panel
